@@ -1,26 +1,15 @@
 package es.android.adivinaedad;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.GsonBuilder;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import es.android.adivinaedad.entidad.Persona;
 import es.android.adivinaedad.repositorio.implementacion.PersonasDbSQLiteImpl;
-import es.android.adivinaedad.servicio.implementacion.ServicioPersonaSQLiteImpl;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
