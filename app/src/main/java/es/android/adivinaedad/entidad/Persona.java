@@ -1,22 +1,13 @@
 package es.android.adivinaedad.entidad;
 
 public class Persona {
-    private int id;
     private String name;
     private int edad;
 
-    public Persona( int id,String name, int edad){
-        this.id= id;
+    public Persona(String name, int edad){
+
         this.name=name;
         this.edad=edad;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -35,11 +26,14 @@ public class Persona {
         this.edad = edad;
     }
 
+    public String edadToString() {
+        return "" + edad;
+    }
+
     @Override
     public String toString() {
         return "Persona{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", edad=" + edad +
                 '}';
     }

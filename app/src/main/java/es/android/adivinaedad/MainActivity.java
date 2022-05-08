@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import es.android.adivinaedad.entidad.Persona;
@@ -25,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView edadText;
     private EditText tv;
-    List<Persona> personas;
-    ServicioPersonaSQLiteImpl servicio;
     PersonasDbSQLiteImpl personadb;
-    ArrayList<String> name, edad;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        personadb= new PersonasDbSQLiteImpl((getApplicationContext()));
         edadText = findViewById(R.id.edad);
         tv = findViewById(R.id.nombre);
 
@@ -46,20 +47,36 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarEdad() {
 
                 try {
-                    for (Persona:personas)
+                    List<Persona> personas= personadb.getAll();
+                    int i=0;
+                    while (!tv.getText().toString().equals(personas.get(i).getName()))
                     {
-                        if ()
-                        {
-                            int edad = ;
-                            edadText.setText(Integer.toString(edad));
-                        } else {
-                            edadText.setText("Ha ocurrido un error");
-                            return;
-                        }
+                        i++;
                     }
+                    edadText.setText((personas.get(i).edadToString()));
                 }
                 catch(Exception e) {
-                    edadText.setText("No es un nombre Valido");
+                    edadText.setText("No es un valido");
                 }
             }
-        };
+                                /*
+                                Otra opcion para el metodo MostrarEdad pero usando un bucle Foreach
+                           try {
+                    List<Persona> personas= personadb.getAll();
+                    for(Persona persona:personas){
+                        if (tv.getText().toString().equals(persona.getName()))
+                        {
+                            edadText.setText(persona.edadToString());
+                            break;
+                        }
+                        else
+                        {
+                            edadText.setText(persona.getName());
+                        }
+                    }
+                    catch(Exception e) {
+                    edadText.setText("No es un valido");
+                }
+
+                     */
+        }
